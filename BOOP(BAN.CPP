@@ -3,50 +3,60 @@
 #include<stdio.h>
 class BANKACC
 {
-  char name[20], add[50],y;
-  int balance;
+  char name[20],y;
+  int balance,ac_no;
   public:
 	void opn_acc();
 	void deposite();
 	void withdraw();
 	void disp_acc();
+	void exit();
 };
 
 void BANKACC :: opn_acc()
 {
-  cout<<"ENTER YOUR NAME :";
+  cout<<endl<<endl;
+  cout<<"ENTER YOUR NAME :\t";
   cin>>name;
-  cout<<"ENTER YOUR ADDRESS :";
-  cin>>add;
-  cout<<"TYPE OF ACCOUNT (SAVING OR CURRUNT ?) :";
+  cout<<"ENTER YOUR ACCOUNT NO. :\t";
+  cin>>ac_no;
+  cout<<"\nTYPE OF ACCOUNT (SAVING OR CURRUNT ?) :\t";
   cin>>y;
-  cout<<"ENTER AMOUNT FOR OPNING ACCOUNT :";
+  cout<<"\nENTER AMOUNT FOR OPNING ACCOUNT :\t";
   cin>>balance;
-  cout<<"***YOUR ACCOUNT IS CREATED***";
+  cout<<"\n***YOUR ACCOUNT IS CREATED***";
 }
 void BANKACC :: deposite()
 {
-  int x;
-  cout<<"ENTER HOW MUCH YOU WANT TO DEPOSITE :";
+  int x=0;
+  cout<<"\n ENTER AMOUNT TO DEPOSITE :\t";
   cin>>x;
-  balance+=x;
-  cout<<"TOTAL AMOUNT IN YOUR ACCOUNT :"<<balance;
+  balance=balance+x;
+  cout<<"\n TOTAL BALANCE IN YOUR ACCOUNT :\t"<<balance;
 }
 void BANKACC :: disp_acc()
 {
-  cout<<"YOUR NAME IS ="<<name;
-  cout<<"YOUR ADDRESS IS ="<<add;
-  cout<<"ACCOUNT TYPE IS ="<<y;
-  cout<<"BALANCE IN YOUR ACCOUNT IS ="<<balance;
+  cout<<"\n|----------------------------------------------------------------|"<<endl;
+  cout<<"YOUR NAME IS =\t"<<name<<endl;
+  cout<<"YOUR ACCOUNT NO. IS =\t"<<ac_no<<endl;
+  cout<<"ACCOUNT TYPE IS =\t"<<y<<endl;
+  cout<<"BALANCE IN YOUR ACCOUNT IS =\t"<<balance;
+  cout<<"\n|----------------------------------------------------------------|"<<endl;
 }
 void BANKACC :: withdraw()
 {
   float amt;
-  cout<<"\n WITHDRAW :";
-  cout<<"ENTER AMOUNT TO WITHDRAW :";
+  cout<<"\n ENTER AMOUNT TO WITHDRAW :\t";
   cin>>amt;
-  balance-=amt;
-  cout<<"NOW TOTAL AMOUNT IS :"<<balance;
+	if(balance>amt)
+	{
+	  balance=balance-amt;
+	  cout<<"\n AFTER WITHDRAW BALANCE IS :\t"<<balance;
+	}
+	else
+	{
+	 cout<<"\n NOT ENOUGH BALANCE"<<endl;
+	}
 }
 
 int main()
@@ -56,52 +66,43 @@ int main()
   BANKACC object;
   do
   {
-    cout<<"1) OPEN ACCOUNT"<<endl;
-    cout<<"2) DEPOSITE MONEY"<<endl;
-    cout<<"3) WITHDRAW MONEY"<<endl;
-    cout<<"4) DISPLAY ACCOUNT"<<endl;
-    cout<<"5) EXIT"<<endl;
-    cout<<"SELECT THE OPTION FROM ABOVE :"<<endl;
+    cout<<"\n   1) OPEN ACCOUNT"<<endl;
+    cout<<"   2) DEPOSITE MONEY"<<endl;
+    cout<<"   3) WITHDRAW MONEY"<<endl;
+    cout<<"   4) DISPLAY ACCOUNT"<<endl;
+    cout<<"   5) EXIT"<<endl;
+    cout<<"\n SELECT THE OPTION FROM ABOVE :";
     cin>>ab;
-
     switch(ab)
     {
 	case 1:
-	cout<<"1) OPEN ACCOUNT"<<endl;
+	cout<<"\n 1) OPEN ACCOUNT"<<endl;
 	object.opn_acc();
 	break;
 
 	case 2:
-	cout<<"2) DEPOSITE MONEY"<<endl;
+	cout<<"\n 2) DEPOSITE MONEY"<<endl;
 	object.deposite();
 	break;
 
 	case 3:
-	cout<<"3) WITHDRAW MONEY"<<endl;
+	cout<<"\n 3) WITHDRAW MONEY"<<endl;
 	object.withdraw();
 	break;
 
 	case 4:
-	cout<<"4) DISPLAY ACCOUNT"<<endl;
+	cout<<"\n 4) DISPLAY ACCOUNT"<<endl;
 	object.disp_acc();
 	break;
 
 	case 5:
-	if(ab==5)
-	{
-	   exit(1);
-	}
-	default:
-	cout<<"THIS IS NOT EXIST TRY AGAIN"<<endl;
-    }
-    {
-    cout<<"DO YOU WANT TO SELECT NEXT OPTION THEN PRESS - Y"<<endl;
-    cout<<"IF YOU WANT TO EXIT THEN PRESS - N";
-    j=getch();
-    if(j=='n'|| j=='N')
-    exit(0);
-    }
-    while(j=='y'|| j=='Y')
+	cout<<"\n\t THANK YOU.."<<endl;
+	goto end;
+
+	default:cout<<"\n INVELID OPTION..."<<endl;
+	}}
+	while(1);
+	end:
 
 getch();
 return 0;
