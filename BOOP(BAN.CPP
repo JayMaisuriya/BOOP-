@@ -10,7 +10,6 @@ class BANKACC
 	void deposite();
 	void withdraw();
 	void disp_acc();
-	void exit();
 };
 
 void BANKACC :: opn_acc()
