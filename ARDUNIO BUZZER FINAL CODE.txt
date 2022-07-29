@@ -1,0 +1,75 @@
+const int buzzer=8;
+int sensorValue=0;
+int buttonState=0;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(3, INPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+}
+
+void loop()
+{
+  sensorValue = analogRead(A0);
+  buttonState = digitalRead(3);
+
+if (buttonState == HIGH) //button is pushed
+{
+if(sensorValue >= 0 && sensorValue < 250)
+{
+  digitalWrite(7, HIGH);
+  digitalWrite(6, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(4, LOW);
+  
+  delay (6000); // 6 second timer
+  tone(buzzer, 1000);
+  delay (500);
+  noTone(buzzer);
+ }
+ 
+else if (sensorValue >= 250 && sensorValue < 500)
+{
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, LOW);
+  digitalWrite(4, LOW);
+  
+  delay (3000); // 3 second timer
+  tone(buzzer, 1000);
+  delay (500);
+  noTone(buzzer);
+ }
+
+else if (sensorValue >= 500 && sensorValue < 1000)
+{
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, LOW);
+  
+  delay (2000); // 2 second timer
+  tone(buzzer, 1000);
+  delay (500);
+  noTone(buzzer);
+ }
+
+else if (sensorValue >=1000)
+{
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+ 
+  delay (0); // 0.01 second timer
+  tone(buzzer, 1000);
+  delay (100000000);
+  noTone(buzzer);
+ }
+}
+}
