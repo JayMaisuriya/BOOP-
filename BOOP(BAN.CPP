@@ -3,7 +3,7 @@
 #include<stdio.h>
 class BANKACC
 {
-  char name[20],y;
+  char name[20],y[10];
   int balance,ac_no;
   public:
 	void opn_acc();
